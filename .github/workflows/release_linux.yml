@@ -26,6 +26,7 @@ jobs:
         bash check.sh $PROJECT_ROOT/linux-p7zip/bin/7zz
     - name: build 7z.so
       run: |
+        export PROJECT_ROOT=`pwd`
         cd CPP/7zip/Bundles/Format7zF
         make -f makefile.gcc
         INSTALL_PREFIX=$PROJECT_ROOT/linux-p7zip make -f makefile.gcc install
