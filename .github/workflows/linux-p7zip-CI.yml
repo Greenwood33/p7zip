@@ -41,3 +41,17 @@ jobs:
         cd CPP/7zip/Bundles/Format7zF
         make -f makefile.gcc
         INSTALL_PREFIX=$PROJECT_ROOT/linux-p7zip make -f makefile.gcc install
+    - name: p7zip
+      run: |
+        7zz a linux-p7zip.7z linux-p7zip -y
+        7zz a linux-p7zip.zip linux-p7zip -y
+    - name: Upload p7zip binary
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: linux-p7zip.*
+        asset_name: linux-p7zip
+        tag: test
+        overwrite: true
+        file_glob: true
+        body: "This is linux binary release using make"
