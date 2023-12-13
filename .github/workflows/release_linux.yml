@@ -1,6 +1,7 @@
 name: p7zip-release
 
 on:
+  workflow_dispatch:
   release:
     tags:
       - '*'
